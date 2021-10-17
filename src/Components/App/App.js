@@ -19,6 +19,7 @@ class App extends Component {
       showModal: !showModal,
     }));
   };
+
   handleFormSubmit = (query) => {
     this.setState({ query });
   };
@@ -29,9 +30,9 @@ class App extends Component {
     return (
       <div className={s.App}>
         <Searchbar onSubmit={handleFormSubmit} />
-        <ImageGallery query={this.state.query} onToggleModal={toggleModal} />
-        <Button onClick={toggleModal} />
-        {showModal && <Modal onToggleModal={toggleModal} />}
+        {/* <ImageGallery query={this.state.query} onToggleModal={toggleModal} images={this.props.images}/> */}
+        {/* <Button onClick={toggleModal} />
+        {showModal && <Modal onToggleModal={toggleModal} />} */}
       </div>
     );
   }

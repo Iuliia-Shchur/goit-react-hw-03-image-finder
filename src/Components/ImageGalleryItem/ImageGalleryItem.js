@@ -1,17 +1,28 @@
 import s from "./ImageGalleryItem.module.css";
+import Modal from "../Modal/Modal";
 
-function ImageGalleryItem({ images }) {
+function ImageGalleryItem({
+  id,
+  previewImg,
+  tags,
+  onToggleModal,
+  showModal,
+  modalImg,
+}) {
   return (
     <>
-      {images.map((image) => (
-        <li className={s.ImageGalleryItem} key={image.id}>
-          <img
-            src={image.webformatURL}
-            alt={image.id}
-            className={s.ImageGalleryItemImage}
-          />
-        </li>
-      ))}
+      <li className={s.ImageGalleryItem} key={id}>
+        <img
+          src={previewImg}
+          alt={tags}
+          className={s.ImageGalleryItemImage}
+          onClick={onToggleModal}
+        />
+      </li>
+
+      {showModal && (
+        <Modal modalImg={modalImg} onToggleModal={onToggleModal} tags={tags} />
+      )}
     </>
   );
 }

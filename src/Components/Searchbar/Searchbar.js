@@ -15,13 +15,18 @@ class Searchbar extends Component {
 
   handleQueryChange = (e) => {
     // this.setState({query: event.currentTarget.value.toLowerCase()});
-    this.setState({ [e.target.name]: e.target.value }, () => {
-      axios
-        .get(
-          `${this.state.apiUrl}/?q=${this.state.query}&page=${this.state.page}&key=${this.state.apiKey}&image_type=photo&orientation=horizontal&per_page=12`
-        )
-        .then((res) => this.setState({ images: res.data.hits }))
-        .catch((err) => console.log(err));
+    const inputValue = e.target.value;
+    this.setState({ [e.target.name]: inputValue }, () => {
+      if (inputValue === "") {
+        this.setState({ images: [] });
+      } else {
+        axios
+          .get(
+            `${this.state.apiUrl}/?q=${this.state.query}&page=${this.state.page}&key=${this.state.apiKey}&image_type=photo&orientation=horizontal&per_page=12`
+          )
+          .then((res) => this.setState({ images: res.data.hits }))
+          .catch((err) => console.log(err));
+      }
     });
   };
 
