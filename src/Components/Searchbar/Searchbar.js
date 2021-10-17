@@ -2,6 +2,7 @@ import { Component } from "react";
 import s from "./Searchbar.module.css";
 import axios from "axios";
 import ImageGallery from "../ImageGallery/ImageGallery";
+import Button from "../Button/Button";
 
 class Searchbar extends Component {
   state = {
@@ -13,10 +14,32 @@ class Searchbar extends Component {
     // /?q=${query}&page=${page}&key=${key}&image_type=photo&orientation=horizontal&per_page=12'
   };
 
+  //   componentDidUpdate(prevProps, prevState) {
+  //     const { query } = this.state;
+  //         if (query !== prevState.searchQuery) {
+  //             this.loadMore()
+  //                 .catch(error => console.log(error))
+  //                 // .finally(() => this.setState({ loadingSpinner: false }));
+  //         }
+  //     }
+
+  //   loadMore = () => {
+  //     const { query, page } = this.state;
+  //     // this.setState({ loadingSpinner: true });
+  //     return (
+  //       .then(images => {
+  //         this.setState(prevState => ({
+  //             images: [...prevState.images, ...images],
+  //             page: prevState.page + 1,
+  //         }));
+  //     });)
+  // };
+
   handleQueryChange = (e) => {
     // this.setState({query: event.currentTarget.value.toLowerCase()});
     const inputValue = e.target.value;
-    this.setState({ [e.target.name]: inputValue }, () => {
+
+    return this.setState({ [e.target.name]: inputValue }, () => {
       if (inputValue === "") {
         this.setState({ images: [] });
       } else {
@@ -65,8 +88,15 @@ class Searchbar extends Component {
         </header>
 
         {this.state.images.length > 0 ? (
-          <ImageGallery images={this.state.images} />
+          <ImageGallery
+            images={this.state.images}
+            query={this.state.query}
+            apiUrl={this.state.apiUrl}
+            apiKey={this.state.apiKey}
+            page={this.state.page}
+          />
         ) : null}
+        <Button onLoadMore={this.loadMore} />
       </div>
     );
   }

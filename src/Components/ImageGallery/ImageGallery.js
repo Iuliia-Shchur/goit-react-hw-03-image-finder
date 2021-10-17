@@ -5,12 +5,15 @@ import s from "./ImageGallery.module.css";
 import Loader from "../Loader/Loader";
 import PropTypes from "prop-types";
 import Modal from "../Modal/Modal";
+import axios from "axios";
 
 class ImageGallery extends Component {
   state = {
     showModal: false,
     currentImg: "",
-    modalImg: {},
+    modalImg: "",
+    apiUrl: "https://pixabay.com/api",
+    apiKey: "23195406-da0192683225ba1cc94043cce",
   };
   // state = {
   //   data: null,
@@ -39,8 +42,8 @@ class ImageGallery extends Component {
     }));
   };
 
-  onImgClick = (modalImg) => {
-    this.setState({ modalImg });
+  onImgClick = (img) => {
+    this.setState({ modalImg: img });
     this.toggleModal();
   };
 
@@ -51,15 +54,16 @@ class ImageGallery extends Component {
     if (images) {
       imageListContent = (
         <ul className={s.ImageGallery}>
-          {images.map((img) => (
+          {images.map(({ id, webformatURL, tags, largeImageURL }) => (
             <ImageGalleryItem
-              key={img.id}
-              previewImg={img.webformatURL}
-              tags={img.tags}
-              modalImg={img.largeImageURL}
+              key={id}
+              previewImg={webformatURL}
+              tags={tags}
+              onImgClick={this.onImgClick}
               onToggleModal={() => this.toggleModal()}
               showModal={this.state.showModal}
-              onImgClick={this.onImgClick}
+              onClick={() => this.onImgClick(largeImageURL)}
+              modalImg={this.state.modalImg}
             />
           ))}
         </ul>

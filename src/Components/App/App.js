@@ -30,6 +30,7 @@ class App extends Component {
     return (
       <div className={s.App}>
         <Searchbar onSubmit={handleFormSubmit} />
+        <Button />
         {/* <ImageGallery query={this.state.query} onToggleModal={toggleModal} images={this.props.images}/> */}
         {/* <Button onClick={toggleModal} />
         {showModal && <Modal onToggleModal={toggleModal} />} */}
