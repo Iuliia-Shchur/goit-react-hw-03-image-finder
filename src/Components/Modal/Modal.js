@@ -1,7 +1,7 @@
 import { Component } from "react";
-import { isCompositeComponentWithType } from "react-dom/test-utils";
 import { createPortal } from "react-dom";
 import s from "./Modal.module.css";
+import PropTypes from "prop-types";
 
 const modalRoot = document.querySelector("#modal-root");
 
@@ -29,15 +29,22 @@ class Modal extends Component {
   };
 
   render() {
+    const { modalImg, tags } = this.props;
+    const { handleBackdropClick } = this;
     return createPortal(
-      <div className={s.Overlay} onClick={this.handleBackdropClick}>
+      <div className={s.Overlay} onClick={handleBackdropClick}>
         <div className={s.Modal}>
-          <img src={this.props.modalImg} alt={this.props.tags} />
+          <img src={modalImg} alt={tags} />
         </div>
       </div>,
       modalRoot
     );
   }
 }
+Modal.propTypes = {
+  onToggleModal: PropTypes.func,
+  modalImg: PropTypes.string,
+  tags: PropTypes.string,
+};
 
 export default Modal;

@@ -1,5 +1,6 @@
 import s from "./ImageGalleryItem.module.css";
 import Modal from "../Modal/Modal";
+import PropTypes from "prop-types";
 
 function ImageGalleryItem({
   id,
@@ -27,5 +28,15 @@ function ImageGalleryItem({
     </>
   );
 }
+
+ImageGalleryItem.propTypes = {
+  id: PropTypes.number,
+  previewImg: PropTypes.string,
+  tags: PropTypes.string,
+  onToggleModal: PropTypes.func,
+  showModal: PropTypes.bool,
+  modalImg: PropTypes.string,
+  onClick: PropTypes.func,
+};
 
 export default ImageGalleryItem;
