@@ -43,7 +43,7 @@ class Modal extends Component {
 }
 Modal.propTypes = {
   onToggleModal: PropTypes.func,
-  modalImg: PropTypes.string,
+  modalImg: PropTypes.object,
   tags: PropTypes.string,
 };
 

@@ -24,7 +24,6 @@ class App extends Component {
     if (query !== prevState.query) {
       this.fetchImages().catch((err) => {
         console.log(err);
-        this.setState({ loading: false });
       });
     }
   }
@@ -39,7 +38,7 @@ class App extends Component {
           page: prevState.page + 1,
         }));
       })
-      .then(() => this.setState({ loading: false }));
+      .finally(() => this.setState({ loading: false }));
   };
 
   loadMore = () => {
