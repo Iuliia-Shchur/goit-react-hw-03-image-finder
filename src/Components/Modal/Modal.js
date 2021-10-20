@@ -7,12 +7,12 @@ const modalRoot = document.querySelector("#modal-root");
 
 class Modal extends Component {
   componentDidMount() {
-    console.log("Component did mount");
+    // console.log("Component did mount");
     window.addEventListener("keydown", this.handleKeyDown);
   }
 
   componentWillUnmount() {
-    console.log("Component will unmount");
+    // console.log("Component will unmount");
     window.removeEventListener("keydown", this.handleKeyDown);
   }
 
@@ -43,7 +43,7 @@ class Modal extends Component {
 }
 Modal.propTypes = {
   onToggleModal: PropTypes.func,
-  modalImg: PropTypes.object,
+  modalImg: PropTypes.string,
   tags: PropTypes.string,
 };
 

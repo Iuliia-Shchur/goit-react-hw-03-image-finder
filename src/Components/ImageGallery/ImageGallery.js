@@ -7,7 +7,7 @@ import ImageError from "../ImageError/ImageError";
 class ImageGallery extends Component {
   state = {
     showModal: false,
-    modalImg: {},
+    modalImg: "",
   };
 
   toggleModal = () => {
@@ -38,7 +38,7 @@ class ImageGallery extends Component {
               key={id}
               previewImg={webformatURL}
               tags={tags}
-              onToggleModal={() => toggleModal()}
+              onToggleModal={toggleModal}
               showModal={showModal}
               onImgClick={onImgClick}
               modalImg={modalImg}

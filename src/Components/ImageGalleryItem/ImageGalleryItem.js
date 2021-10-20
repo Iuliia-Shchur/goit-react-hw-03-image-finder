@@ -37,7 +37,7 @@ ImageGalleryItem.propTypes = {
   tags: PropTypes.string,
   onToggleModal: PropTypes.func,
   showModal: PropTypes.bool,
-  modalImg: PropTypes.object,
+  modalImg: PropTypes.string,
   onClick: PropTypes.func,
 };
 
