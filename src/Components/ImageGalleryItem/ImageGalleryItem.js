@@ -10,11 +10,13 @@ function ImageGalleryItem({
   showModal,
   modalImg,
   onImgClick,
+  largeImageURL,
 }) {
   return (
     <>
       <li className={s.ImageGalleryItem} key={id}>
         <img
+          data-img={largeImageURL}
           src={previewImg}
           alt={tags}
           className={s.ImageGalleryItemImage}

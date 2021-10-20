@@ -16,7 +16,9 @@ class ImageGallery extends Component {
     }));
   };
 
-  onImgClick = (img) => {
+  onImgClick = (e) => {
+    const { img } = e.target.dataset;
+
     this.setState({ modalImg: img });
     this.toggleModal();
   };
@@ -32,12 +34,13 @@ class ImageGallery extends Component {
         <ul className={s.ImageGallery}>
           {images.map(({ id, webformatURL, tags, largeImageURL }) => (
             <ImageGalleryItem
+              largeImageURL={largeImageURL}
               key={id}
               previewImg={webformatURL}
               tags={tags}
               onToggleModal={() => toggleModal()}
               showModal={showModal}
-              onImgClick={() => onImgClick(largeImageURL)}
+              onImgClick={onImgClick}
               modalImg={modalImg}
             />
           ))}
