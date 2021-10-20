@@ -9,7 +9,7 @@ function ImageGalleryItem({
   onToggleModal,
   showModal,
   modalImg,
-  onClick,
+  onImgClick,
 }) {
   return (
     <>
@@ -18,7 +18,7 @@ function ImageGalleryItem({
           src={previewImg}
           alt={tags}
           className={s.ImageGalleryItemImage}
-          onClick={onClick}
+          onClick={onImgClick}
         />
       </li>
 

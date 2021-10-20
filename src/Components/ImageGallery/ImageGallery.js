@@ -35,10 +35,9 @@ class ImageGallery extends Component {
               key={id}
               previewImg={webformatURL}
               tags={tags}
-              onImgClick={onImgClick}
               onToggleModal={() => toggleModal()}
               showModal={showModal}
-              onClick={() => onImgClick(largeImageURL)}
+              onImgClick={() => onImgClick(largeImageURL)}
               modalImg={modalImg}
             />
           ))}
